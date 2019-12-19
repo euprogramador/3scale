@@ -1,0 +1,92 @@
+<div *ngIf="selectedTenant == null && editTenant==null">
+  <button (click)="newTenant()">New Tenant</button>
+  <p>
+  <h5> tenants</h5>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Tenant</th>
+        <th scope="col">Opções</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let tenant of tenants">
+        <td>{{ tenant.id }}</td>
+        <td>
+            <button (click)="selectTenant(tenant)">Access Control</button>&nbsp;
+            <button (click)="editTenants(tenant)">Edit</button>&nbsp;
+            <button (click)="deleteTenant(tenant)">Remove</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div *ngIf="selectedTenant != null">
+  <h5>Tenant: {{selectedTenant.id}}</h5>
+
+  <div  class="grid-container">
+    <div  class="grid">
+      <div class="grid-col grid-col--fixed-left">
+        <div class="grid-item grid-item--header">
+          <p>Application & App-Key</p>
+        </div>
+
+        <div class="grid-item" [ngClass]="{ odd: odd, even: even }"
+          *ngFor="let app of accessControl['access-control']; let index=index; let odd=odd; let even=even;">
+          <p><button (click)="deleteApplication(app)"> - </button> &nbsp;
+            <input type="text" size="20" [(ngModel)]="app.applicationName" /> &nbsp;
+            <input type="text" size="10" [(ngModel)]="app.applicationKey" (dblclick)="generate(app)"
+              data-toggle="tooltip" title="double click to generate token" /></p>
+        </div>
+
+      </div>
+
+      <div class="grid-col" *ngFor="let api of apis">
+        <div class="grid-item grid-item--header">
+          <p>{{api.id}}<br>{{api.name}}</p>
+        </div>
+
+        <div class="grid-item" [ngClass]="{ odd: odd, even: even }"
+          *ngFor="let app of accessControl['access-control']; let index=index; let odd=odd; let even=even;">
+          <p><input type="checkbox" [(ngModel)]="app.apis[api.id]" /></p>
+        </div>
+      </div>
+    </div>
+    <div id="grid"></div>
+
+  </div>
+
+  <button (click)="newApplication()">New Application</button><br /><br />
+
+  <button (click)="back()">Back</button> &nbsp;&nbsp;&nbsp;
+  <button (click)="apply()">Apply</button>
+
+</div>
+
+
+<div *ngIf="editTenant!=null">
+  <h5>Insert / Edit Tenants</h5>
+
+  <form>
+    <div class="form-group">
+      <label for="id">Id</label>
+      <input type="text" class="form-control" id="id" [(ngModel)]="editTenant.id" name="id" >
+      <small id="help" class="form-text text-muted">Tenant id</small>
+    </div>
+    <div class="form-group">
+      <label for="url">Url</label>
+      <input type="text" class="form-control" id="url" [(ngModel)]="editTenant.url" name="url" >
+    </div>
+    <div class="form-group">
+      <label for="url">Account</label>
+      <select name="account" class="form-control"  [(ngModel)]="editTenant.account">
+        <option *ngFor="let oo of accounts" [value]="oo.id">{{oo.name}}</option>
+      </select>
+    </div>
+  </form>
+
+
+  <button (click)="back()">Back</button> &nbsp;&nbsp;&nbsp;
+  <button (click)="saveTenant()">Save</button>
+</div>

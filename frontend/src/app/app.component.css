@@ -1,0 +1,72 @@
+.centerText{
+    text-align: center;
+ }
+
+
+
+
+.even { background-color: #fff; }
+.odd { background-color: #f0f0f0; }
+
+.grid-container {
+    display: grid; /* This is a (hacky) way to make the .grid element size to fit its content */
+    overflow: auto;
+    max-height: 600px;
+    width: auto;
+  }
+  .grid {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+  .grid-col {
+    width: 150px;
+    min-width: 150px;
+  }
+  
+  .grid-item--header {
+    height: 100px;
+    min-height: 100px;
+    position: sticky;
+    position: -webkit-sticky;
+    background: rgb(206, 206, 206);
+    top: 0;
+    font-weight: bold;
+  }
+  
+  .grid-col--fixed-left {
+      width:400px;
+    position: sticky;
+    left: 0;
+    z-index: 9998;
+    background: white;
+  }
+  .grid-col--fixed-right {
+    position: sticky;
+    right: 0;
+    z-index: 9998;
+    background: white;
+  }
+  
+  .grid-item {
+    height: 50px;
+    text-align: center; 
+    border-bottom: 1px solid gray;
+    border-left: 1px solid gray;
+    border-right: 1px solid #fff;
+    border-top: 1px solid #fff;
+  }
+
+  .grid-item>p {
+      margin-top: 1rem;
+  }
+
+  .grid-col--fixed-left>.grid-item>p {
+    margin-top: 0.5rem;
+}
+
+
+.grid-item--header>.grid-item {
+    border: 1px solid gray;
+
+}

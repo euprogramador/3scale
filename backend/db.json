@@ -1,0 +1,98 @@
+{
+  "tenants": [
+    {
+      "id": "qa",
+      "url": "https://6ca05f67523d4efe90696887bda818882e53918cab07e2bfafb6709a0ef32e29@qa-admin.gw.mycloudlab.com"
+    },
+    {
+      "id": "homolog",
+      "url": "https://89343120e804d5d70c9603f6b5839785698f489973c064caf4220edc7e6d7b4a@homolog-admin.gw.mycloudlab.com",
+      "account": 9
+    }
+  ],
+  "access-control": [
+    {
+      "tenant": "homolog",
+      "access-control": [
+        {
+          "applicationName": "financeiro",
+          "applicationDescription": "aplicativo financeiro",
+          "applicationKey": "WgWhT8xu",
+          "apis": {
+            "mensageria": true,
+            "contabil": true,
+            "divulgacao": true,
+            "devolucoes": true,
+            "api": false,
+            "altoroj_rest_api": false,
+            "beer-catalog": true
+          }
+        },
+        {
+          "applicationName": "messageria",
+          "applicationKey": "W7om2b-0",
+          "apis": {
+            "api": false,
+            "altoroj_rest_api": false,
+            "beer-catalog": true
+          }
+        }
+      ]
+    },
+    {
+      "tenant": "desenv",
+      "access-control": [
+        {
+          "applicationName": "contabil",
+          "applicationKey": "Ito1nub3",
+          "apis": {
+            "contabil": true,
+            "devolucoes": true,
+            "divulgacao": true,
+            "impressao": true
+          }
+        },
+        {
+          "applicationName": "mensageria-api",
+          "applicationKey": "icF0ujP9",
+          "apis": {
+            "contabil": true,
+            "divulgacao1": false
+          }
+        }
+      ]
+    },
+    {
+      "tenant": "qa",
+      "access-control": [
+        {
+          "applicationName": "financeiro",
+          "applicationKey": "8cpqRLzT",
+          "apis": {
+            "beer-catalog": true
+          }
+        },
+        {
+          "applicationName": "new app",
+          "applicationKey": "FBTCmjpZ",
+          "apis": {}
+        },
+        {
+          "applicationName": "new app",
+          "applicationKey": "-11U6UId",
+          "apis": {}
+        },
+        {
+          "applicationName": "new app",
+          "applicationKey": "MoqAKo5K",
+          "apis": {}
+        },
+        {
+          "applicationName": "new app",
+          "applicationKey": "dFz1YdrO",
+          "apis": {}
+        }
+      ]
+    }
+  ]
+}
